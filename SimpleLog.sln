@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleLog", "SimpleLog\Simp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleLog.xUnitTests", "SimpleLog.xUnitTests\SimpleLog.xUnitTests.csproj", "{16ECC6C1-95D6-466E-B425-ED110687586E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleLog.Abstractions", "SimpleLog.Abstractions\SimpleLog.Abstractions.csproj", "{6A1B4998-4C03-4783-B612-7BC3030E673B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{16ECC6C1-95D6-466E-B425-ED110687586E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16ECC6C1-95D6-466E-B425-ED110687586E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16ECC6C1-95D6-466E-B425-ED110687586E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A1B4998-4C03-4783-B612-7BC3030E673B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1B4998-4C03-4783-B612-7BC3030E673B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1B4998-4C03-4783-B612-7BC3030E673B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1B4998-4C03-4783-B612-7BC3030E673B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

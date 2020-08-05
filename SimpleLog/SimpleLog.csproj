@@ -2,17 +2,38 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>Aridane Álamo</Authors>
+    <Product>SimpleLog</Product>
+    <Description>Simple loggin system for .Net Core implementing conditional targets and fluent configuration.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/aralmo/SimpleLog/wiki/Getting-Started</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/aralmo/SimpleLog</RepositoryUrl>
+    <PackageTags>log core .net</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryType>github</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="File\**" />
     <EmbeddedResource Remove="File\**" />
     <None Remove="File\**" />
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.6" />
+    <PackageReference Include="SimpleLog.Abstractions" Version="0.0.1" />
   </ItemGroup>
 
 </Project>
