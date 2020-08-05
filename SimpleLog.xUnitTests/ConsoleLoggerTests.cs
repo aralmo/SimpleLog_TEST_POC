@@ -7,10 +7,10 @@ namespace SimpleLog.xUnitTests
     public class ConsoleLoggerTests
     {
         [Fact(DisplayName ="Fallbacks to default formatter if error")]
-        void FallbackToDefaultFormatterIfError()
+        public void FallbackToDefaultFormatterIfError()
         {
             string log = string.Empty;
-            Action<string> write = (msg) => log = msg;
+            void write(string msg) => log = msg;
 
             new SimpleLog.ConsoleTarget.ConsoleTarget(write, write)
             {

@@ -12,7 +12,7 @@ namespace SimpleLog.xUnitTests
     public class FileTargetTests
     {
         [Fact(DisplayName = "File sequence increases when maxsize is reach")]
-        void FilesSplitByMaxSize()
+        public void FilesSplitByMaxSize()
         {
             var repository = new FilesRepository();
             var fileTarget = new FileTarget.FileTarget(repository)

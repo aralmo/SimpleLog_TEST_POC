@@ -30,7 +30,7 @@ namespace SimpleLog.xUnitTests
         }
 
         [Fact(DisplayName = "LogWritting task restarts after completed")]
-        void BufferedLoggerRestartsTask()
+        public void BufferedLoggerRestartsTask()
         {
             var logger = new SlowLogger();
             var bufferedLogger = new BufferedLogger(logger, 10, BufferExceededBehaviors.Lock);

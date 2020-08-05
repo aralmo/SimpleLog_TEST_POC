@@ -13,7 +13,7 @@ namespace SimpleLog.xUnitTests
     public class FileWritterTests
     {
         [Fact(DisplayName = "Multiple threads writting to file work")]
-        void MultipleThreadsWrittingToFile()
+        public void MultipleThreadsWrittingToFile()
         {
             if (File.Exists(".\\test.log"))
                 File.Delete(".\\test.log");
@@ -37,7 +37,7 @@ namespace SimpleLog.xUnitTests
         }
 
         [Fact(DisplayName = "All lines get logged")]
-        void WriteToFile()
+        public void WriteToFile()
         {
             if (File.Exists(".\\test2.log"))
                 File.Delete(".\\test2.log");
