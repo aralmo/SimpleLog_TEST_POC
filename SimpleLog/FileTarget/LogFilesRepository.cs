@@ -29,20 +29,19 @@ namespace SimpleLog.FileTarget
             }
         }
 
-        static object writeLock = new object();
+        static readonly object writeLock = new object();
         public void WriteLine(string filename, string message, Encoding encoding)
         {
             lock (writeLock)
             {
-                var logFile = getLogFileItem(filename);
+                var logFile = GetLogFileItem(filename);
                 logFile.WriteLine(message, encoding);
             }
         }
 
-        private static LogFile getLogFileItem(string filename)
+        private static LogFile GetLogFileItem(string filename)
         {
-            LogFile logFile;
-            if (!LogFiles.TryGetValue(filename, out logFile))
+            if (!LogFiles.TryGetValue(filename, out LogFile logFile))
             {
 
                 var info = new FileInfo(filename);
@@ -76,7 +75,7 @@ namespace SimpleLog.FileTarget
             public Task WriteTask { get; set; }
             public Encoding Encoding { get; set; } = null;
 
-            object LockObject = new object();
+            readonly object LockObject = new object();
 
             Task FlushTask;
             CancellationTokenSource FlushTaskCancellationTokenSource;

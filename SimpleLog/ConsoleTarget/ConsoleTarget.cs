@@ -1,20 +1,18 @@
 ﻿using SimpleLog.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SimpleLog.ConsoleTarget
 {
     public class ConsoleTarget : ISimpleLogTarget
     {
-        static internal readonly Func<LogEntry, string> DEFAULT_FORMAT = (entry) => $"{entry.Date.ToString("yyyy-MM-dd hh:ss")},{entry.LogLevel},{entry.Message}";
+        static internal readonly Func<LogEntry, string> DEFAULT_FORMAT = (entry) => $"{entry.Date:yyyy-MM-dd hh:ss},{entry.LogLevel},{entry.Message}";
         public Func<LogEntry, bool> Condition { get; set; }
         public Func<LogEntry, string> Formatter { get; set; }
         public ConsoleOutputs OutputStream { get; set; }
             = ConsoleOutputs.StandardOutput;
 
-        Action<string> StandardOutputWriteLine;
-        Action<string> StandardErrorWriteLine;
+        readonly Action<string> StandardOutputWriteLine;
+        readonly Action<string> StandardErrorWriteLine;
         public ConsoleTarget(Action<string> standardOutputWriteLine, Action<string> standardErrorWriteLine)
         {
             StandardOutputWriteLine = standardOutputWriteLine;

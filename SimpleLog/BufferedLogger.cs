@@ -1,10 +1,6 @@
 ﻿using SimpleLog.Abstractions;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,7 +11,7 @@ namespace SimpleLog
     /// </summary>
     public class BufferedLogger : ISimpleLogTarget
     {
-        EventWaitHandle QueueIsNotFull = new EventWaitHandle(true, EventResetMode.ManualReset);
+        readonly EventWaitHandle QueueIsNotFull = new EventWaitHandle(true, EventResetMode.ManualReset);
 
         readonly ConcurrentQueue<LogEntry> Entries
             = new ConcurrentQueue<LogEntry>();

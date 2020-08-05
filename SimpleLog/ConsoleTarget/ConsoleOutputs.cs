@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SimpleLog.ConsoleTarget
+﻿namespace SimpleLog.ConsoleTarget
 {
     public enum ConsoleOutputs
     {

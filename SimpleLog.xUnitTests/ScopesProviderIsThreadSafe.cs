@@ -14,10 +14,10 @@ namespace Clou.IO.Logging.xUnitTests
     {
         [Trait("", "LogScopesProvider")]
         [Fact(DisplayName = "Is aware of threads")]
-        void MultiThreadedScopesPoC()
+        public void MultiThreadedScopesPoC()
         {
             ConcurrentQueue<string> logs = new ConcurrentQueue<string>();
-            var logger = new logger((m) => logs.Enqueue(m));
+            var logger = new Logger((m) => logs.Enqueue(m));
             object lock_object = new object();
 
             var t1 = Task.Run(() =>
@@ -45,10 +45,10 @@ namespace Clou.IO.Logging.xUnitTests
             Assert.Contains(result, validResults);
         }
 
-        class logger : ILogger
+        class Logger : ILogger
         {
-            Action<string> log;
-            public logger(Action<string> log) => this.log = log;
+            readonly Action<string> log;
+            public Logger(Action<string> log) => this.log = log;
             public IDisposable BeginScope<TState>(TState state)
             {
                 return LogScopesProvider.CreateScope(state);

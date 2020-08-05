@@ -9,7 +9,6 @@ namespace SimpleLog.FileTarget
         const int MB = 1024 * 1024;
         private static readonly LogFilesRepository Repository = new LogFilesRepository();
 
-#warning complete comments
         /// <summary>
         /// Adds a file target to the logging system
         /// </summary>

@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System;
 
 namespace SimpleLog.ConsoleTarget
 {

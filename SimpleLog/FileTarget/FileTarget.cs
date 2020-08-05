@@ -10,7 +10,7 @@ namespace SimpleLog.FileTarget
 {
     public class FileTarget : ISimpleLogTarget
     {
-        static internal readonly Func<LogEntry, string> DEFAULT_FORMAT = (entry) => $"{entry.Date.ToString("u")},{entry.LogLevel},{entry.Message}";
+        static internal readonly Func<LogEntry, string> DEFAULT_FORMAT = (entry) => $"{entry.Date:u},{entry.LogLevel},{entry.Message}";
         static internal readonly Func<FileTargetNamingOptions, string> DEFAULT_FILENAME = (entry) => $"{entry.LogLevel}{(entry.Sequence == 0 ? string.Empty : $"_{entry.Sequence}")}.log";
         public Func<LogEntry, bool> Condition { get; set; }
         public Func<LogEntry, string> Formatter { get; set; }
@@ -18,7 +18,7 @@ namespace SimpleLog.FileTarget
         public Func<FileTargetNamingOptions, string> FileName;
         public int MaxFileSize;
         public Encoding Encoding;
-        ILogFilesRepository LogFiles;
+        readonly ILogFilesRepository LogFiles;
         public FileTarget(ILogFilesRepository logFiles)
         {
             LogFiles = logFiles;

@@ -12,7 +12,6 @@ namespace SimpleLog
     public class LogEntry
     {
         static readonly EventId DEFAULT_EVENTID = new EventId(0, string.Empty);
-        static readonly object[] DEFAULT_PARAMS = new object[0];
         /// <summary>
         /// EvenId that was passed onto the ILogger.Log method
         /// </summary>
