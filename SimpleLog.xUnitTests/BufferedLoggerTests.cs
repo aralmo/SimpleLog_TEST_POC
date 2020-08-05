@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Clou.IO.Logging.xUnitTests
+namespace SimpleLog.xUnitTests
 {
     [Trait("", "BufferedQueue")]
     public class BufferedLoggerTests
@@ -30,7 +30,7 @@ namespace Clou.IO.Logging.xUnitTests
         }
 
         [Fact(DisplayName = "LogWritting task restarts after completed")]
-        public void BufferedLoggerRestartsTask()
+        void BufferedLoggerRestartsTask()
         {
             var logger = new SlowLogger();
             var bufferedLogger = new BufferedLogger(logger, 10, BufferExceededBehaviors.Lock);

@@ -1,12 +1,7 @@
-﻿using SimpleLog.ConsoleTarget;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using Xunit;
-using SimpleLog;
 
-namespace Clou.IO.Logging.xUnitTests
+namespace SimpleLog.xUnitTests
 {
     [Trait("","ConsoleTarget")]
     public class ConsoleLoggerTests
@@ -17,7 +12,7 @@ namespace Clou.IO.Logging.xUnitTests
             string log = string.Empty;
             Action<string> write = (msg) => log = msg;
 
-            new ConsoleTarget(write, write)
+            new SimpleLog.ConsoleTarget.ConsoleTarget(write, write)
             {
                 Formatter = (e) => { throw new Exception(); }
             }.Log(new LogEntry()

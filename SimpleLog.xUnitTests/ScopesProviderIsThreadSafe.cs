@@ -3,16 +3,17 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using SimpleLog.Abstractions;
+using System.Linq;
 
-namespace Clou.IO.Logging.xUnitTests
+namespace SimpleLog.xUnitTests
 {
+    [Trait("", "LogScopesProvider")]
     public class ScopesProviderIsThreadSafe
     {
-        [Trait("", "LogScopesProvider")]
         [Fact(DisplayName = "Is aware of threads")]
         public void MultiThreadedScopesPoC()
         {
@@ -43,6 +44,32 @@ namespace Clou.IO.Logging.xUnitTests
 
             string[] validResults = new string[] { "thread 2 scope,thread 2 info\nthread 1 scope,thread 1 info", "thread 1 scope,thread 1 info\nthread 2 scope,thread 2 info" };
             Assert.Contains(result, validResults);
+        }
+
+        [Fact(DisplayName = "Scopes get formatted correctly")]
+        public void LogScopeMessageFormatting()
+        {
+            var builder = new LogBuilder();
+            var target = new LogTarget();
+            builder.AddLogTarget(target);
+            var log = builder.Build();
+
+            using (log.BeginScope("{name} {id}", "scope", 10))
+            {
+                log.LogTrace("Test");
+            }
+            var entry = target.Entries.First();
+            
+            Assert.Equal("scope 10",entry.Scope.ToString());
+        }
+        class LogTarget : ISimpleLogTarget
+        {
+            public Func<LogEntry, bool> Condition => (f) => { return true; } ;
+            public List<LogEntry> Entries { get; set; } = new List<LogEntry>();
+            public void Log(LogEntry entry)
+            {
+                Entries.Add(entry);
+            }
         }
 
         class Logger : ILogger
