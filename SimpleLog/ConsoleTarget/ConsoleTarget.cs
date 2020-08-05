@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SimpleLog.ConsoleTarget
 {
-    public class ConsoleTarget : SimpleLogTarget
+    public class ConsoleTarget : ISimpleLogTarget
     {
         static internal readonly Func<LogEntry, string> DEFAULT_FORMAT = (entry) => $"{entry.Date.ToString("yyyy-MM-dd hh:ss")},{entry.LogLevel},{entry.Message}";
         public Func<LogEntry, bool> Condition { get; set; }

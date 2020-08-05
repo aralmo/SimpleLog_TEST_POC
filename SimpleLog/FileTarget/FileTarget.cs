@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SimpleLog.FileTarget
 {
-    public class FileTarget : SimpleLogTarget
+    public class FileTarget : ISimpleLogTarget
     {
         static internal readonly Func<LogEntry, string> DEFAULT_FORMAT = (entry) => $"{entry.Date.ToString("u")},{entry.LogLevel},{entry.Message}";
         static internal readonly Func<FileTargetNamingOptions, string> DEFAULT_FILENAME = (entry) => $"{entry.LogLevel}{(entry.Sequence == 0 ? string.Empty : $"_{entry.Sequence}")}.log";

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SimpleLog.Abstractions
 {
-    public interface SimpleLogTarget
+    public interface ISimpleLogTarget
     {
         void Log(LogEntry entry);
         Func<LogEntry, bool> Condition { get; }

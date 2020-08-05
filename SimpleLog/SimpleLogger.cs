@@ -1,13 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace SimpleLog
 {
     /// <summary>
-    /// The CloudIOLogger, this class takes care of conditions and call the appropiate log targets.
+    /// The Logger, this class takes care of conditions and call the appropiate log targets.
     /// </summary>
     public class SimpleLogger : ILogger
     {

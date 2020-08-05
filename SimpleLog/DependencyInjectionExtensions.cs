@@ -12,7 +12,6 @@ namespace SimpleLog
     /// </summary>
     public static class DependencyInjectionExtensions
     {
-        private static LogLevel[] enabledLogLevels;
         /// <summary>
         /// Sets the enabled log levels for the logging framework.
         /// </summary>
@@ -21,7 +20,7 @@ namespace SimpleLog
         /// <param name="maxLevel"></param>
         public static void EnableLevels(this LogBuilder options, LogLevel minLevel = LogLevel.Information, LogLevel maxLevel = LogLevel.Critical)
         {
-            enabledLogLevels = ClampLogLevels(minLevel, maxLevel).ToArray();
+            options.EnabledLevels = ClampLogLevels(minLevel, maxLevel).ToArray();
         }
         private static IEnumerable<LogLevel> ClampLogLevels(LogLevel minLevel, LogLevel maxLevel)
         {

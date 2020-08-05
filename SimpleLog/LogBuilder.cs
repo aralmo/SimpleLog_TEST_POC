@@ -10,10 +10,10 @@ namespace SimpleLog
     {
         internal LogLevel[] EnabledLevels { get; set; } 
             = null;
-        internal List<SimpleLogTarget> LogTargets { get; set; } 
-            = new List<SimpleLogTarget>();
+        internal List<ISimpleLogTarget> LogTargets { get; set; } 
+            = new List<ISimpleLogTarget>();
 
-        public void AddLogTarget(SimpleLogTarget logTarget)
+        public void AddLogTarget(ISimpleLogTarget logTarget)
         {
             LogTargets.Add(logTarget);
         }

@@ -13,7 +13,7 @@ namespace SimpleLog
     /// <summary>
     /// This logger target buffers log entries and call the nested logger passed as parameter when required.
     /// </summary>
-    public class BufferedLogger : SimpleLogTarget
+    public class BufferedLogger : ISimpleLogTarget
     {
         EventWaitHandle QueueIsNotFull = new EventWaitHandle(true, EventResetMode.ManualReset);
 
@@ -23,11 +23,11 @@ namespace SimpleLog
         readonly int MaxBufferSize;
         readonly BufferExceededBehaviors BufferExceededBehavior;
 
-        readonly SimpleLogTarget Logger;
+        readonly ISimpleLogTarget Logger;
         private Task LogWrittingTask;
         public Func<LogEntry, bool> Condition => Logger.Condition;
 
-        public BufferedLogger(SimpleLogTarget logger, int maxBufferSize = BufferSize.Infinite, BufferExceededBehaviors bufferExceededBehavior = BufferExceededBehaviors.Lock)
+        public BufferedLogger(ISimpleLogTarget logger, int maxBufferSize = BufferSize.Infinite, BufferExceededBehaviors bufferExceededBehavior = BufferExceededBehaviors.Lock)
         {
             MaxBufferSize = maxBufferSize;
             BufferExceededBehavior = bufferExceededBehavior;

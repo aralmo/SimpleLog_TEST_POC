@@ -41,7 +41,7 @@ namespace Clou.IO.Logging.xUnitTests
             bufferedLogger.Log(new LogEntry() { Message = "msg2" });
         }
 
-        class SlowLogger : SimpleLogTarget
+        class SlowLogger : ISimpleLogTarget
         {
             public EventWaitHandle TestFinished = new EventWaitHandle(false, EventResetMode.ManualReset);
             public List<string> LoggedEntries { get; set; } = new List<string>();
